@@ -1,0 +1,70 @@
+{
+  "WorkingDirectory": [ "App_Data", "Modules", "@Id", "netcoreapp3.1" ],
+  "ContentDirectory": [ "..", "..", "Modules" ],
+  "Default": {
+    "Name": "Default",
+    "Running": true,
+    "Modules": [
+      "Apiks.Module.App",
+      "Apiks.Module.Shared"
+    ]
+  },
+  "Areas": [
+    {
+      "Name": "accounts",
+      "Running": true,
+      "AuthorizeByDefault": false,
+      "RequestPathPrefix": "accounts",
+      "Modules": [ "Apiks.Module.Accounts" ]
+    },
+    {
+      "Name": "auth",
+      "Running": true,
+      "AuthorizeByDefault": false,
+      "RequestPathPrefix": "auth",
+      "Modules": [ "Apiks.Module.Auth" ]
+    },
+    {
+      "Name": "api",
+      "Running": true,
+      "AuthorizeByDefault": false,
+      "RequestPathPrefix": "api",
+      "Modules": [
+        "Apiks.Module.Auth.Api"
+      ]
+    }
+  ],
+  "Modules": [
+    {
+      "Id": "Apiks.Module.App",
+      "Name": "App",
+      "Version": "1.0.0",
+      "Bundle": true
+    },
+    {
+      "Id": "Apiks.Module.Shared",
+      "Name": "Shared",
+      "Version": "1.0.0",
+      "Bundle": true,
+      "Installed": false
+    },
+    {
+      "Id": "Apiks.Module.Accounts",
+      "Name": "CoreApi",
+      "Version": "1.0.0",
+      "Bundle": true
+    },
+    {
+      "Id": "Apiks.Module.Auth",
+      "Name": "Auth",
+      "Version": "1.0.0",
+      "Bundle": true
+    },
+    {
+      "Id": "Apiks.Module.Auth.Api",
+      "Name": "AuthApi",
+      "Version": "1.0.0",
+      "Bundle": true
+    }
+  ]
+}

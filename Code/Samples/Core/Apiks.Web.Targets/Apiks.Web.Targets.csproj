@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Apiks.Module.Accounts\Apiks.Module.Accounts.csproj" />
+    <ProjectReference Include="..\..\Modules\Apiks.Module.App\Apiks.Module.App.csproj" />
+    <ProjectReference Include="..\..\Modules\Apiks.Module.Auth.Api\Apiks.Module.Auth.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Apiks.Module.Auth\Apiks.Module.Auth.csproj" />
+    <ProjectReference Include="..\..\Modules\Apiks.Module.Shared\Apiks.Module.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
