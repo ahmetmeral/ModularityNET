@@ -3,8 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
+    <OutputPath>..\..\Core\Apiks.Web.Core\App_Data\Modularity\Modules\Apiks.Module.Shared</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <Content Remove="wwwroot\css\site.css" />
     <Content Remove="wwwroot\js\site.js" />
@@ -16,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\ModularityNET\ModularityNET.csproj" />
+    <ProjectReference Include="..\..\..\Core\ModularityNET\ModularityNET.csproj">
+      <Private>false</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

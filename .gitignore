@@ -241,3 +241,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/Code/Samples/Core/Apiks.Web.Core/App_Data/Modularity/Modules
