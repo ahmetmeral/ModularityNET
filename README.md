@@ -5,7 +5,7 @@ Modularity is an open soruce AspNetCore Mvc Modularity library.
 
 ## Get Started
 
-> ```Install-Package ModularityNET -Version 0.0.1-apha-1```
+> ```Install-Package ModularityNET -Version 0.0.1-alpha-4```
 
 ###### modularity.json (Samples/App_Data/Modularity)
 
