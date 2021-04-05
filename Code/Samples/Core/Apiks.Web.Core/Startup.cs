@@ -25,7 +25,7 @@ namespace Apiks.Web.Core
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddModularityMvc(HostEnvironment.IsDevelopment());
+            services.AddModularityMvc();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +35,7 @@ namespace Apiks.Web.Core
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();
             app.UseModularityMvc();
         }
     }

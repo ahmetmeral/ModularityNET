@@ -17,8 +17,7 @@ namespace ModularityNET.Extentions
         public static IApplicationBuilder UseModularityMvc(this IApplicationBuilder app)
         {
             var env = app.ApplicationServices.GetRequiredService<IWebHostEnvironment>();
-
-            app.UseRouting();
+          
             app.UseStaticFiles();
             app.UseModularityStaticFiles();
             app.UseModularityConfigureApplication();

@@ -16,6 +16,7 @@ namespace ModularityNET
         public List<AreaOptions> Areas { get; set; }
         public List<ModuleOptions> Modules { get; set; }
         public List<PluginOptions> Plugins { get; set; }
+        public bool IsDevelopment { get; set; }
         public bool Exist { get; set; }
         public Exception Exception { get; set; }
 
@@ -30,8 +31,7 @@ namespace ModularityNET
             {
                 return Manifest;
             }
-            //todo:buradaki path bilgileri linux da nasıl çalışır bilmiyoruz.. test etmemiz gerekiyor.
-            //string path = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Configs", "modularity.json");//todo: dolduracağız.
+
             string path = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", "Modularity", "modularity.json");//todo: dolduracağız.
 
             return Get(path, forced);
@@ -50,8 +50,6 @@ namespace ModularityNET
 
                 Manifest = JsonConvert.DeserializeObject<ModularityManifest>(json);
                 Manifest.Exist = true;
-
-
 
                 return Manifest;
             }

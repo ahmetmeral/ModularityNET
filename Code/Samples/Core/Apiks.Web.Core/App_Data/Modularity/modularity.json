@@ -1,6 +1,7 @@
 {
   "WorkingDirectory": [ "App_Data", "Modules", "@Id", "netcoreapp3.1" ],
   "ContentDirectory": [ "..", "..", "Modules" ],
+  "IsDevelopment": true,
   "Default": {
     "Name": "Default",
     "Running": true,

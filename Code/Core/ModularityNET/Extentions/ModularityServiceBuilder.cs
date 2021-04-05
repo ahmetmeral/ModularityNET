@@ -15,15 +15,18 @@ namespace ModularityNET.Extentions
 {
     public static class ModularityServiceBuilder
     {
-        public static IServiceCollection AddModularityMvc(this IServiceCollection services, bool isDevelopment)
+        public static IServiceCollection AddModularityMvc(this IServiceCollection services)
         {
+            var manifest = ModularityManifest.Get();
+
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services
             .AddMvc()
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
             .AddModularity()
-            .AddModularityRazorRuntimeCompilation(isDevelopment);
+            .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
 
             services.AddModularityConventions();
             services.AddModularityEmbeddedFileProviders();
