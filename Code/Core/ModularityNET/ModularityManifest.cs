@@ -16,6 +16,7 @@ namespace ModularityNET
         public List<AreaOptions> Areas { get; set; }
         public List<ModuleOptions> Modules { get; set; }
         public List<PluginOptions> Plugins { get; set; }
+        public bool UseEmbeddedFiles { get; set; } = false;
         public bool IsDevelopment { get; set; }
         public bool Exist { get; set; }
         public Exception Exception { get; set; }
