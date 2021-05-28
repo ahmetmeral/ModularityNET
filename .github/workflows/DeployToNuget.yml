@@ -1,11 +1,11 @@
   
 name: "Deploy to NUGET"
 
-#on: [push]
-on:
-  push:
-    tags:
-      - '*.*'
+on: [push]
+#on:
+#  push:
+#    tags:
+#      - '*.*'
 
 env:
   PROJECT_PATH: 'Code/Core/ModularityNET/ModularityNET.csproj'
