@@ -19,7 +19,7 @@ namespace ModularityNET.Extentions
             var env = app.ApplicationServices.GetRequiredService<IWebHostEnvironment>();
             var manifest = ModularityManifest.Get();
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
 
             if (manifest.UseEmbeddedFiles)
             {

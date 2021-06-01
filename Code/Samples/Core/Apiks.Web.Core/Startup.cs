@@ -35,6 +35,7 @@ namespace Apiks.Web.Core
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseModularityMvc();
         }
