@@ -14,7 +14,7 @@ namespace ModularityNET.Extentions
 {
     public static class ModularityApplicationBuilder
     {
-        public static IApplicationBuilder UseModularityMvc(this IApplicationBuilder app)
+        public static IApplicationBuilder UseModularity(this IApplicationBuilder app)
         {
             var env = app.ApplicationServices.GetRequiredService<IWebHostEnvironment>();
             var manifest = ModularityManifest.Get();

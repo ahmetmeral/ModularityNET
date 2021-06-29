@@ -15,7 +15,7 @@ namespace ModularityNET.Extentions
 {
     public static class ModularityServiceBuilder
     {
-        public static IServiceCollection AddModularityMvcAll(this IServiceCollection services)
+        public static IServiceCollection AddModularity(this IServiceCollection services)
         {
             var manifest = ModularityManifest.Get();
 
@@ -24,10 +24,10 @@ namespace ModularityNET.Extentions
             services
             .AddMvc()
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
-            .AddModularity()
+            .AddModularityApplicationParts()
             .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
 
-            services.AddModularityConfiguration();
+            services.AddModularityConfigure();
 
             return services;
         }
@@ -40,13 +40,14 @@ namespace ModularityNET.Extentions
             return services;
         }
 
-        public static IMvcBuilder AddModularityMvcBuilder(this IMvcBuilder mvcBuilder)
+        public static IMvcBuilder AddModularityParts(this IMvcBuilder mvcBuilder)
         {
             //before call : AddModularityCore
+
             var manifest = ModularityManifest.Get();
 
             mvcBuilder.SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
-            .AddModularity()
+            .AddModularityApplicationParts()
             .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
 
             //after call:AddModularityConfiguration
@@ -54,7 +55,7 @@ namespace ModularityNET.Extentions
             return mvcBuilder;
         }
 
-        public static IServiceCollection AddModularityConfiguration(this IServiceCollection services)
+        public static IServiceCollection AddModularityConfigure(this IServiceCollection services)
         {
             services.AddModularityConventions();
             services.AddModularityEmbeddedFileProviders();
@@ -64,7 +65,7 @@ namespace ModularityNET.Extentions
         }
 
 
-        public static IMvcBuilder AddModularity(this IMvcBuilder mvcBuilder)
+        public static IMvcBuilder AddModularityApplicationParts(this IMvcBuilder mvcBuilder)
         {
             var modularity = ModularityBuilder.Get();
 
