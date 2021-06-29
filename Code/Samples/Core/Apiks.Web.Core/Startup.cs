@@ -25,7 +25,8 @@ namespace Apiks.Web.Core
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddModularityMvc();
+            services.AddModularityMvc(option=> { 
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

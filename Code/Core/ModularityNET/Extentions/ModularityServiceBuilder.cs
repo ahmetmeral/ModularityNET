@@ -22,55 +22,25 @@ namespace ModularityNET.Extentions
     /// </summary>
     public static class ModularityServiceBuilder
     {
-        public static IServiceCollection AddModularityMvc(this IServiceCollection services)
+        public static IServiceCollection AddModularityMvc(this IServiceCollection services, Action<MvcOptions> options)
         {
             var manifest = ModularityManifest.Get();
 
-            services.AddModularity();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services
-            .AddMvc()
+            .AddMvc(options)
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
             .AddModularityApplicationParts()
             .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
 
-            services.AddModularityConfigure();
-
-            return services;
-        }
-
-        public static IServiceCollection AddModularity(this IServiceCollection services)
-        {
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-
-            return services;
-        }
-
-        public static IMvcBuilder AddModularityMvc(this IMvcBuilder mvcBuilder)
-        {
-            //before call : AddModularityCore
-
-            var manifest = ModularityManifest.Get();
-
-            mvcBuilder.SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
-            .AddModularityApplicationParts()
-            .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
-
-            //after call:AddModularityConfiguration
-
-            return mvcBuilder;
-        }
-
-        public static IServiceCollection AddModularityConfigure(this IServiceCollection services)
-        {
             services.AddModularityConventions();
             services.AddModularityEmbeddedFileProviders();
             services.AddModularityConfigureServices();
 
             return services;
         }
-
 
         public static IMvcBuilder AddModularityApplicationParts(this IMvcBuilder mvcBuilder)
         {
