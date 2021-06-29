@@ -15,12 +15,11 @@ namespace ModularityNET.Extentions
 {
     public static class ModularityServiceBuilder
     {
-        public static IServiceCollection AddModularityMvc(this IServiceCollection services)
+        public static IServiceCollection AddModularityMvcAll(this IServiceCollection services)
         {
             var manifest = ModularityManifest.Get();
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddModularityCore();
 
             services
             .AddMvc()
@@ -28,12 +27,42 @@ namespace ModularityNET.Extentions
             .AddModularity()
             .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
 
+            services.AddModularityConfiguration();
+
+            return services;
+        }
+
+        public static IServiceCollection AddModularityCore(this IServiceCollection services)
+        {
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+
+            return services;
+        }
+
+        public static IMvcBuilder AddModularityMvcBuilder(this IMvcBuilder mvcBuilder)
+        {
+            //before call : AddModularityCore
+            var manifest = ModularityManifest.Get();
+
+            mvcBuilder.SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
+            .AddModularity()
+            .AddModularityRazorRuntimeCompilation(manifest.IsDevelopment);
+
+            //after call:AddModularityConfiguration
+
+            return mvcBuilder;
+        }
+
+        public static IServiceCollection AddModularityConfiguration(this IServiceCollection services)
+        {
             services.AddModularityConventions();
             services.AddModularityEmbeddedFileProviders();
             services.AddModularityConfigureServices();
 
             return services;
         }
+
 
         public static IMvcBuilder AddModularity(this IMvcBuilder mvcBuilder)
         {
