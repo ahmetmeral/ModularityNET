@@ -13,13 +13,20 @@ using System.Linq;
 
 namespace ModularityNET.Extentions
 {
+    /// <summary>
+    /// services.AddModularity()
+    /// or 
+    /// services.AddModularityCore()
+    /// services.AddMvc().AddModularityParts()
+    /// services.AddModularityConfigure();
+    /// </summary>
     public static class ModularityServiceBuilder
     {
-        public static IServiceCollection AddModularity(this IServiceCollection services)
+        public static IServiceCollection AddModularityMvc(this IServiceCollection services)
         {
             var manifest = ModularityManifest.Get();
 
-            services.AddModularityCore();
+            services.AddModularity();
 
             services
             .AddMvc()
@@ -32,7 +39,7 @@ namespace ModularityNET.Extentions
             return services;
         }
 
-        public static IServiceCollection AddModularityCore(this IServiceCollection services)
+        public static IServiceCollection AddModularity(this IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -40,7 +47,7 @@ namespace ModularityNET.Extentions
             return services;
         }
 
-        public static IMvcBuilder AddModularityParts(this IMvcBuilder mvcBuilder)
+        public static IMvcBuilder AddModularityMvc(this IMvcBuilder mvcBuilder)
         {
             //before call : AddModularityCore
 
